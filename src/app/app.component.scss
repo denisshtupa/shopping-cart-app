@@ -28,3 +28,12 @@
   pointer-events: none;
   color: gray;
 }
+
+.badge-notify {
+  background: #f43a4c;
+  position: relative;
+  border-radius: 50px;
+  font-size: 11px;
+  top: -25px;
+  left: -25px;
+}

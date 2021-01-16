@@ -28,10 +28,6 @@ export class AppComponent {
     return new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(Number(price))
   }
 
-  // request a currency format
-  // → 123.456,79 €
-
-
   public removeQuantity(product: IProduct) {
     product.quantity--
   }
@@ -59,11 +55,17 @@ export class AppComponent {
   }
 
   public goToCart() {
-
+    console.log("CLICKEDDD")
   }
 
   public manageCartAccess(): boolean {
     return this.productList.some(x => x.onCart);
+  }
+
+  public numberOfProductsInCart(): number {
+    let productsInCart: Array<IProduct>;
+    productsInCart = this.productList.filter(x => x.onCart == true);
+    return productsInCart.length;
   }
 
 }
