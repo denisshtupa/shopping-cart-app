@@ -1,0 +1,30 @@
+.text-center {
+  font-family: 'ui-monospace' !important;
+  letter-spacing: 2px;
+}
+
+
+.remove-icon {
+  padding: 0px 10px;
+  position: relative;
+  top: 6px;
+  color: red
+}
+
+.add-icon {
+  padding: 0px 10px;
+  position: relative;
+  top: 6px;
+  color: green
+}
+
+.cart-icon {
+  padding: 0px 10px;
+  position: relative;
+  top: 6px;
+}
+
+.disabled-icon {
+  pointer-events: none;
+  color: gray;
+}
