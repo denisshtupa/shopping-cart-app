@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "shooping-card-app": {
+    "shopping-cart-app": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/shooping-card-app",
+            "outputPath": "dist/shopping-cart-app",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -66,18 +66,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "shooping-card-app:build"
+            "browserTarget": "shopping-cart-app:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "shooping-card-app:build:production"
+              "browserTarget": "shopping-cart-app:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "shooping-card-app:build"
+            "browserTarget": "shopping-cart-app:build"
           }
         },
         "test": {
@@ -114,15 +114,19 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "shooping-card-app:serve"
+            "devServerTarget": "shopping-cart-app:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "shooping-card-app:serve:production"
+              "devServerTarget": "shopping-cart-app:serve:production"
             }
           }
         }
       }
-    }},
-  "defaultProject": "shooping-card-app"
+    }
+  },
+  "defaultProject": "shopping-cart-app",
+  "cli": {
+    "analytics": false
+  }
 }
