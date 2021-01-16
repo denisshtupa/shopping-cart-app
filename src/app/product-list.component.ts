@@ -1,13 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, TemplateRef } from '@angular/core';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Constants } from './shared/constants/static-variables';
 import { IProduct } from './shared/interfaces/interfaces';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  templateUrl: './product-list.component.html',
+  styleUrls: ['./product-list.component.scss']
 })
-export class AppComponent {
+export class ProductListComponent {
+  public modalRef: BsModalRef;
   public title = 'Shopping cart';
   public isAscendingSort: boolean;
   public ordered: string = "";
@@ -16,11 +18,21 @@ export class AppComponent {
 
   public filteredProducts: Array<IProduct> = this.productList;
 
-  constructor() {
+  constructor(private modalService: BsModalService) {
 
   }
 
   ngOnInit() {
+
+  }
+
+  public openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
+  }
+
+  public closeModalHandler() {
+
+    this.modalRef.hide();
 
   }
 

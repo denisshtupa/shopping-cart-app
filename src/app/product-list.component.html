@@ -15,10 +15,11 @@
         <span class="material-icons cart-icon cursor-pointer" style="font-size:40px;"
           [title]="manageCartAccess() ? 'Show my cart' : 'Your cart is empty'"
           [class.disabled-icon]="!manageCartAccess()" [style.color]="manageCartAccess() ? 'green' : 'gray'"
-          (click)="goToCart()">
+          (click)="openModal(template)">
           shopping_cart
         </span>
-        <span class="badge badge-notify" style=" font-size:13px; color:rgb(1, 59, 1)">{{this.numberOfProductsInCart()}}
+        <span *ngIf="this.numberOfProductsInCart() != 0" class="badge badge-notify"
+          style=" font-size:13px; color:rgb(1, 59, 1)">{{this.numberOfProductsInCart()}}
         </span>
       </ng-container>
     </div>
@@ -96,3 +97,8 @@
     <h3 *ngIf="this.filteredProducts.length == 0" style="margin-left:40px;">No results found</h3>
   </div>
 </div>
+
+<ng-template #template>
+  <custom-modal [products]="productList" (closeModalClicked)="closeModalHandler()"></custom-modal>
+
+</ng-template>

@@ -1,7 +1,7 @@
 export interface IProduct {
     id: string
     name: string
-    price: string | number
+    price: number | string
     quantity: number
     onCart: boolean         // used only on UI
 }
