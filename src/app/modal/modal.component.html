@@ -94,7 +94,7 @@
                 <div class="form-row text-center margin-top-base">
                   <div class="col-12">
                     <button type="button" [disabled]="!this.shippingDetailsForm.valid" class="btn btn-primary btn-sm"
-                      (click)="selectTab(2)">Confirm shipping
+                      (click)="selectTab(2, 'shipping')">Confirm shipping
                       details</button>
                   </div>
                 </div>
@@ -133,7 +133,7 @@
                 <div class="form-row text-center margin-top-base">
                   <div class="col-12">
                     <button type="button" [disabled]="!this.paymentForm.valid" class="btn btn-primary btn-sm"
-                      (click)="selectTab(3)">Confirm payment
+                      (click)="selectTab(3, 'payment')">Confirm payment
                       details</button>
                   </div>
                 </div>

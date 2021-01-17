@@ -1,10 +1,10 @@
+import { IShippingDetails, IPaymentDetails } from './../shared/interfaces/interfaces';
 import { GlobalValidator } from './../shared/constants/global-validator';
 import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { IProduct } from '../shared/interfaces/interfaces';
 import { TabsetComponent } from 'ngx-bootstrap/tabs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ValidatorService } from 'angular-iban';
-
 
 @Component({
     selector: 'custom-modal',
@@ -26,22 +26,39 @@ export class CustomModalComponent {
         return this.paymentForm.controls;
     };
 
-
     constructor(private _fb: FormBuilder) {
         this.initShippingDetailsForm();
         this.initPaymentForm();
     }
 
     ngOnInit() {
-        this.addedProducts = this.products.filter(x => x.onCart)
+        this.addedProducts = this.products.filter(x => x.onCart);
+        this.patchPaymentForm();
+        this.patchShippingDetailsForm();
     }
 
     public onCloseIconClickHandler() {
         this.closeModalClicked.emit();
     }
 
-    public selectTab(tabId: number) {
+    public selectTab(tabId: number, mode: string = "") {
         this.staticTabs.tabs[tabId].active = true;
+        if (mode == "shipping" && this.shippingDetailsForm.valid) {
+            let shipping: IShippingDetails = {
+                firstName: this.shipForm.firstName.value,
+                secondName: this.shipForm.secondName.value,
+                address: this.shipForm.address.value,
+                tel: this.shipForm.tel.value
+            }
+            localStorage.setItem("shipping", JSON.stringify(shipping));
+        }
+        if (mode == "payment" && this.paymentForm.valid) {
+            let payment: IPaymentDetails = {
+                accountOwner: this.payForm.accountOwner.value,
+                iban: this.payForm.iban.value
+            }
+            localStorage.setItem("payment", JSON.stringify(payment));
+        }
     }
 
     public selectTabConditionally(tabId: number, isValid: boolean) {
@@ -86,10 +103,35 @@ export class CustomModalComponent {
         });
     }
 
+    private patchShippingDetailsForm() {
+        let shippingDetailsObject: IShippingDetails = JSON.parse(localStorage.getItem("shipping"));
+
+        if (shippingDetailsObject) {
+            this.shippingDetailsForm.patchValue({
+                firstName: shippingDetailsObject.firstName,
+                secondName: shippingDetailsObject.secondName,
+                address: shippingDetailsObject.address,
+                tel: shippingDetailsObject.tel
+            })
+        }
+    }
+
     private initPaymentForm() {
         this.paymentForm = this._fb.group({
             accountOwner: ['', [Validators.required, GlobalValidator.onlyLetters]],
             iban: ['', [Validators.required, ValidatorService.validateIban]]
         });
+    }
+
+    private patchPaymentForm() {
+        let paymentObject: IPaymentDetails = JSON.parse(localStorage.getItem("payment"));
+
+        if (paymentObject) {
+            this.paymentForm.patchValue({
+                accountOwner: paymentObject.accountOwner,
+                iban: paymentObject.iban
+            })
+        }
+
     }
 }
