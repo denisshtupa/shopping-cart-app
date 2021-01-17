@@ -13,7 +13,7 @@ import { constants } from 'buffer';
 
 export class ProductListComponent {
   public modalRef: BsModalRef;
-  public title = 'Shopping cart';
+  public title: string = 'Shopping cart';
   public isAscendingSort: boolean;
   public ordered: string = "";
   public searchValue: string = "";
@@ -25,7 +25,6 @@ export class ProductListComponent {
   }
 
   ngOnInit() {
-
   }
 
   private loadProductsListFromAPI() {
