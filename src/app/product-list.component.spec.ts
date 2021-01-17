@@ -1,3 +1,5 @@
+import { HttpClient, HttpHandler } from '@angular/common/http';
+import { ProductsService } from './service/products.service';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { TestBed } from '@angular/core/testing';
 import { ProductListComponent } from './product-list.component';
@@ -13,7 +15,10 @@ describe('ProductListComponent', () => {
       providers: [
         BsModalService,
         ComponentLoaderFactory,
-        PositioningService
+        PositioningService,
+        ProductsService,
+        HttpClient,
+        HttpHandler
       ]
     }).compileComponents();
   });
