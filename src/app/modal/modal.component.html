@@ -203,10 +203,15 @@
 
           <div class="form-row text-center margin-top-base">
             <div class="col-12">
-              <button type="button" class="btn btn-primary btn-sm"
+              <button type="button" class="btn btn-primary col-md-6 btn-sm"
                 [disabled]="!this.paymentForm.valid || !this.shippingDetailsForm.valid" (click)="selectTab(4)">Confirm
                 all
                 information</button>
+            </div>
+            <div class="col-12 margin-top-base">
+              <button type="button" class="btn btn-primary col-md-6 btn-sm" (click)="onCloseIconClickHandler()">Go to
+                product
+                list</button>
             </div>
           </div>
 
@@ -214,7 +219,25 @@
       </tab><!-- end of Checkout tab-->
       <tab heading="Progress">
         <div class="container margin-top-base">
+          <h4>Feedback for all steps</h4>
+
+          <div class="progress" [style.height]="'30px'">
+            <div class="progress-bar cursor-pointer"
+              [class]="this.totalPrice() != '0,00 €' ? 'bg-success' : 'bg-danger'" style="width:33%;"
+              [title]="'Go to cart section'" (click)="selectTabConditionally(0, this.totalPrice() != '0,00 €')">
+              Product {{this.totalPrice() != '0,00 €'? ' (OK)' : ' (not OK)'}}
+            </div>
+            <div class="progress-bar cursor-pointer"
+              [class]="this.shippingDetailsForm.valid ? 'bg-success' : 'bg-danger'"
+              (click)="selectTabConditionally(1, this.shippingDetailsForm.valid)" style="width:33%">
+              Shipping {{this.shippingDetailsForm.valid ? ' (OK)' : ' (not OK)'}}
+            </div>
+            <div class="progress-bar cursor-pointer" [class]="this.paymentForm.valid ? 'bg-success' : 'bg-danger'"
+              (click)="selectTabConditionally(2, this.paymentForm.valid)" style="width:33%">
+              Payment {{this.paymentForm.valid ? ' (OK)' : ' (not OK)'}}
+            </div>
+          </div>
         </div>
-      </tab>
+      </tab><!-- end of Progress tab-->
     </tabset>
   </div>

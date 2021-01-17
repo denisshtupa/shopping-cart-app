@@ -34,7 +34,6 @@ export class CustomModalComponent {
 
     ngOnInit() {
         this.addedProducts = this.products.filter(x => x.onCart)
-        console.log("🚀 ~ file: modal.component.ts ~ line 27 ~ CustomModalComponent ~ ngOnInit ~ this.addedProducts ", this.addedProducts)
     }
 
     public onCloseIconClickHandler() {
@@ -43,6 +42,14 @@ export class CustomModalComponent {
 
     public selectTab(tabId: number) {
         this.staticTabs.tabs[tabId].active = true;
+    }
+
+    public selectTabConditionally(tabId: number, isValid: boolean) {
+        if (isValid) {
+            this.staticTabs.tabs[tabId].active = true;
+        } else {
+            return;
+        }
     }
 
     public formatToGermanCurrency(product: IProduct): string {
@@ -55,7 +62,6 @@ export class CustomModalComponent {
         this.addedProducts.forEach(x => {
             totalPrice += Number(x.price) * x.quantity
         });
-
         return new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(Number(totalPrice.toString()));
     }
 
