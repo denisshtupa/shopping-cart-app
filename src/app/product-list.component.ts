@@ -1,8 +1,9 @@
 import { ProductsService } from './service/products.service';
-import { Component, TemplateRef } from '@angular/core';
+import { Component, ContentChild, TemplateRef } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Constants } from './shared/constants/static-variables';
 import { IProduct } from './shared/interfaces/interfaces';
+import { constants } from 'buffer';
 
 @Component({
   selector: 'app-root',
@@ -16,9 +17,8 @@ export class ProductListComponent {
   public isAscendingSort: boolean;
   public ordered: string = "";
   public searchValue: string = "";
-  public productList = Constants.productList;
-
-  public filteredProducts: Array<IProduct> = [];
+  public productList: IProduct[];
+  public filteredProducts: IProduct[] = [];
 
   constructor(private modalService: BsModalService, private _productsService: ProductsService) {
     this.loadProductsListFromAPI();
@@ -32,9 +32,13 @@ export class ProductListComponent {
     this._productsService.getProductList().subscribe(res => {
       let response: IProduct[] = res;
       response.map(x => x.onCart = false);
+      this.productList = response;
       this.filteredProducts = response;
     }, (error) => {
-      this.filteredProducts = this.productList;
+      if (error) {
+        this.productList = Constants.productList;
+        this.filteredProducts = Constants.productList;
+      }
     });
   }
 

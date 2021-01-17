@@ -196,7 +196,7 @@
             <div class="form-row margin-top-base">
               <div class="col-12">
                 <h6>Account owner: <strong>{{this.payForm.accountOwner.value}}</strong></h6>
-                <h6>IBAN: <strong>{{this.payForm.iban.value}}</strong></h6>
+                <h6>IBAN: <strong>{{this.payForm.iban.value | ibanFormatter}}</strong></h6>
               </div>
             </div>
           </ng-container>
