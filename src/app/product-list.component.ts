@@ -1,3 +1,4 @@
+import { ProductsService } from './service/products.service';
 import { Component, TemplateRef } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Constants } from './shared/constants/static-variables';
@@ -8,6 +9,7 @@ import { IProduct } from './shared/interfaces/interfaces';
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss']
 })
+
 export class ProductListComponent {
   public modalRef: BsModalRef;
   public title = 'Shopping cart';
@@ -16,14 +18,24 @@ export class ProductListComponent {
   public searchValue: string = "";
   public productList = Constants.productList;
 
-  public filteredProducts: Array<IProduct> = this.productList;
+  public filteredProducts: Array<IProduct> = [];
 
-  constructor(private modalService: BsModalService) {
-
+  constructor(private modalService: BsModalService, private _productsService: ProductsService) {
+    this.loadProductsListFromAPI();
   }
 
   ngOnInit() {
 
+  }
+
+  private loadProductsListFromAPI() {
+    this._productsService.getProductList().subscribe(res => {
+      let response: IProduct[] = res;
+      response.map(x => x.onCart = false);
+      this.filteredProducts = response;
+    }, (error) => {
+      this.filteredProducts = this.productList;
+    });
   }
 
   public openModal(template: TemplateRef<any>) {
@@ -31,9 +43,7 @@ export class ProductListComponent {
   }
 
   public closeModalHandler() {
-
     this.modalRef.hide();
-
   }
 
   public formatToGermanCurrency(price: number): string {
@@ -64,10 +74,6 @@ export class ProductListComponent {
 
   public onSearchTyping(searchValue: string) {
     this.filteredProducts = Constants.filterProducts(searchValue, this.productList);
-  }
-
-  public goToCart() {
-    console.log("CLICKEDDD")
   }
 
   public manageCartAccess(): boolean {

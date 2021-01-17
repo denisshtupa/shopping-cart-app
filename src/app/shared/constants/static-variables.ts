@@ -5,13 +5,12 @@ import { Uuid } from "./uuid";
 export class Constants {
 
     static productList: Array<IProduct> = [
-        { id: Uuid.MakeNew(), name: 'Car', price: 20000, quantity: 0, onCart: false },
-        { id: Uuid.MakeNew(), name: 'Jeans', price: 50, quantity: 0, onCart: false },
-        { id: Uuid.MakeNew(), name: 'Phone', price: 800, quantity: 0, onCart: false },
-        { id: Uuid.MakeNew(), name: 'Computer', price: 1000, quantity: 0, onCart: false },
-        { id: Uuid.MakeNew(), name: 'Book', price: 12, quantity: 0, onCart: false }
+        { id: Uuid.MakeNew(), name: 'Car', price: 15999, quantity: 0, onCart: false },
+        { id: Uuid.MakeNew(), name: 'Jeans', price: 59, quantity: 0, onCart: false },
+        { id: Uuid.MakeNew(), name: 'Phone', price: 899, quantity: 0, onCart: false },
+        { id: Uuid.MakeNew(), name: 'Computer', price: 1099, quantity: 0, onCart: false },
+        { id: Uuid.MakeNew(), name: 'Book', price: 19, quantity: 0, onCart: false }
     ]
-
 
     static sort(arrayToSort: Array<any>, asc: boolean = true, columnToSort: string = 'price') {
         if (asc) {

@@ -7,6 +7,8 @@ import { ModalModule, BsModalService } from 'ngx-bootstrap/modal';
 import { CustomModalComponent } from './modal/modal.component';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { AngularIbanModule } from 'angular-iban';
+import { ProductsService } from './service/products.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -21,10 +23,12 @@ import { AngularIbanModule } from 'angular-iban';
     TabsModule.forRoot(),
     AppRoutingModule,
     ReactiveFormsModule,
-    AngularIbanModule
+    AngularIbanModule,
+    HttpClientModule
   ],
   providers: [
-    BsModalService
+    BsModalService,
+    ProductsService
   ],
   bootstrap: [ProductListComponent]
 })
