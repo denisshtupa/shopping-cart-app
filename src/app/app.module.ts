@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { ProductListComponent } from './product-list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ModalModule } from 'ngx-bootstrap/modal';
+import { ModalModule, BsModalService } from 'ngx-bootstrap/modal';
 import { CustomModalComponent } from './modal/modal.component';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { AngularIbanModule } from 'angular-iban';
@@ -23,7 +23,9 @@ import { AngularIbanModule } from 'angular-iban';
     ReactiveFormsModule,
     AngularIbanModule
   ],
-  providers: [],
+  providers: [
+    BsModalService
+  ],
   bootstrap: [ProductListComponent]
 })
 export class AppModule { }

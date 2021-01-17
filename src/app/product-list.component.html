@@ -15,7 +15,7 @@
         <span class="material-icons cart-icon cursor-pointer" style="font-size:40px;"
           [title]="manageCartAccess() ? 'Show my cart' : 'Your cart is empty'"
           [class.disabled-icon]="!manageCartAccess()" [style.color]="manageCartAccess() ? 'green' : 'gray'"
-          (click)="openModal(template)">
+          (click)="openModal(template)" id="cart-icon">
           shopping_cart
         </span>
         <span *ngIf="this.numberOfProductsInCart() != 0" class="badge badge-notify"
