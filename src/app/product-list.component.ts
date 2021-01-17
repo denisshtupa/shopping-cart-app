@@ -1,9 +1,8 @@
 import { ProductsService } from './service/products.service';
-import { Component, ContentChild, TemplateRef } from '@angular/core';
+import { Component, TemplateRef } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Constants } from './shared/constants/static-variables';
 import { IProduct } from './shared/interfaces/interfaces';
-import { constants } from 'buffer';
 
 @Component({
   selector: 'app-root',

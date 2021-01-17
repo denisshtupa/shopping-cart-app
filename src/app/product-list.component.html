@@ -1,15 +1,15 @@
-<div class="jumbotron main-container">
-  <h2 class="text-center" style="margin-bottom:40px">{{title}}</h2>
+<div class="jumbotron main-container" [style.background-color]="'#84aeae'">
+  <h2 class="text-center" style="margin-bottom:40px" id="app-title">{{title}}</h2>
 
   <div class="row" *ngIf="this.productList?.length > 0">
-    <div class="col-md-4" style="margin-left:40px;">
+    <div class="col-md-9" style="margin-left:40px;">
       <div class="form-group form-search is-empty input-group" style="margin-top: 8px; width: 220px">
         <input class="form-control" [(ngModel)]="searchValue" (keyup)="onSearchTyping($event.target.value)"
           placeholder="Search for products" type="text">
       </div>
     </div>
 
-    <div class="col-md-3 pull-left">
+    <div class="col-md-1 pull-left">
       <ng-container>
         <span class="material-icons cart-icon cursor-pointer" style="font-size:40px;"
           [title]="manageCartAccess() ? 'Show my cart' : 'Your cart is empty'"
