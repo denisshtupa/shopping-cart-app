@@ -1,7 +1,7 @@
-import { IShippingDetails, IPaymentDetails } from './../shared/interfaces/interfaces';
-import { GlobalValidator } from './../shared/constants/global-validator';
+import { IShippingDetails, IPaymentDetails } from '../../shared/interfaces/interfaces';
+import { GlobalValidator } from '../../shared/constants/global-validator';
 import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
-import { IProduct } from '../shared/interfaces/interfaces';
+import { IProduct } from '../../shared/interfaces/interfaces';
 import { TabsetComponent } from 'ngx-bootstrap/tabs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ValidatorService } from 'angular-iban';

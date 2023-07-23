@@ -1,4 +1,4 @@
-import { IProduct } from './../shared/interfaces/interfaces';
+import { IProduct } from '../shared/interfaces/interfaces';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';

@@ -1,5 +1,4 @@
 .td-actions .btn {
-
   margin: 0px;
   padding: 2px;
 
@@ -9,25 +8,27 @@
     &:hover {
       color: #666666;
     }
+  }
+}
 
+.quantity-icon {
+  padding: 0px 10px;
+  position: relative;
+  font-size: 26px;
+  top: 5px;
+
+  &-remove {
+    color: red
   }
 
+  &-add {
+    color: green;
+  }
 }
 
-
-
-.remove-icon {
+.checkout-icon {
+  font-size: 26px;
   padding: 0px 10px;
-  position: relative;
-  top: 6px;
-  color: red
-}
-
-.add-icon {
-  padding: 0px 10px;
-  position: relative;
-  top: 6px;
-  color: green
 }
 
 .cart-icon {

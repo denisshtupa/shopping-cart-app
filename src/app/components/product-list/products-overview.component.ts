@@ -1,16 +1,16 @@
-import { ProductsService } from './service/products.service';
+import { ProductsService } from '../../services/products.service';
 import { Component, TemplateRef } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { Constants } from './shared/constants/static-variables';
-import { IProduct } from './shared/interfaces/interfaces';
+import { Constants } from '../../shared/constants/static-variables';
+import { IProduct } from '../../shared/interfaces/interfaces';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.scss']
+  selector: 'products-overview',
+  templateUrl: './products-overview.component.html',
+  styleUrls: ['./products-overview.component.scss']
 })
 
-export class ProductListComponent {
+export class ProductsOverviewComponent {
   public modalRef: BsModalRef;
   public title: string = 'Shopping cart';
   public isAscendingSort: boolean;
@@ -19,33 +19,35 @@ export class ProductListComponent {
   public productList: IProduct[];
   public filteredProducts: IProduct[] = [];
 
-  constructor(private modalService: BsModalService, private _productsService: ProductsService) {
-    this.loadProductsListFromAPI();
+  constructor(private _productsService: ProductsService) {
   }
 
   ngOnInit() {
+    this.loadProductsListFromAPI();
   }
 
   private loadProductsListFromAPI() {
-    this._productsService.getProductList().subscribe(res => {
-      let response: IProduct[] = res;
-      response.map(x => x.onCart = false);
-      this.productList = response;
-      this.filteredProducts = response;
-    }, (error) => {
-      if (error) {
-        this.productList = Constants.productList;
-        this.filteredProducts = Constants.productList;
+    this._productsService.getProductList().subscribe({
+      next: (res: IProduct[]) => {
+        res.map((x: IProduct) => x.onCart = false);
+        this.productList = res;
+        this.filteredProducts = res;
+      },
+      error: (error) => {
+        if (error) {
+          this.productList = Constants.productList;
+          this.filteredProducts = Constants.productList;
+        }
       }
     });
   }
 
   public openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template);
+    // this.modalRef = this.modalService.show(template);
   }
 
   public closeModalHandler() {
-    this.modalRef.hide();
+    // this.modalRef.hide();
   }
 
   public formatToGermanCurrency(price: number): string {
@@ -53,11 +55,11 @@ export class ProductListComponent {
   }
 
   public removeQuantity(product: IProduct) {
-    product.quantity--
+    product.quantity--;
   }
 
   public addQuantity(product: IProduct) {
-    product.quantity++
+    product.quantity++;
   }
 
   public addOnCart(product: IProduct) {

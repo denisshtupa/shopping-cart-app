@@ -12,6 +12,7 @@ export class GlobalValidator {
             if (control.value !== "" && (control.value.toString().length <= 6 || !NUMBER_REGEX.test(control.value))) {
                 return { "phoneNumberFormat": true }
             }
+            return null;
         }
         else
             return null;
@@ -23,6 +24,7 @@ export class GlobalValidator {
             if (control.value !== "" && !NUMBER_REGEX.test(control.value)) {
                 return { "onlyLetters": true }
             }
+          return null;
         }
         else
             return null;

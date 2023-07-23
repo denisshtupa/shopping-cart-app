@@ -1,0 +1,38 @@
+.main-container {
+  padding: 30px;
+  background-color: #ffd2ba;
+
+  .text-center {
+    letter-spacing: 2px;
+    margin-bottom: 40px;
+  }
+
+  .toolbar-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .search-area {
+    width: 350px;
+    margin-left: 20px;
+  }
+}
+
+
+.main-shopping-cart {
+  font-size: 2rem;
+}
+
+.table-header-cell {
+  width: 25% !important;
+  text-align: center !important;
+
+  &-c-pointer {
+    cursor: pointer !important;
+  }
+}
+
+.text-center-aligned {
+  text-align: center !important;
+}

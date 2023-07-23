@@ -1,35 +1,32 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
-import { ProductListComponent } from './product-list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ModalModule, BsModalService } from 'ngx-bootstrap/modal';
-import { CustomModalComponent } from './modal/modal.component';
-import { TabsModule } from 'ngx-bootstrap/tabs';
-import { AngularIbanModule } from 'angular-iban';
-import { ProductsService } from './service/products.service';
+import { ProductsService } from './services/products.service';
 import { HttpClientModule } from '@angular/common/http';
-
+import { SharedModule } from './shared/shared.module';
+import { ComponentsModule } from './components/components.module';
+import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [
-    ProductListComponent,
-    CustomModalComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    ModalModule.forRoot(),
-    TabsModule.forRoot(),
+    // ModalModule,
+    // TabsModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    AngularIbanModule,
-    HttpClientModule
+    HttpClientModule,
+    SharedModule,
+    ComponentsModule
   ],
   providers: [
-    BsModalService,
+    // BsModalService,
     ProductsService
   ],
-  bootstrap: [ProductListComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
