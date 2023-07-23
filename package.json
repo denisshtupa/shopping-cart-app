@@ -3,16 +3,15 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "node server.js",
+    "start": "ng serve --configuration=development",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "heroku-postbuild": "ng build --prod",
+    "prod": "ng build --configuration=production",
 
-    "build-serve": "node --max_old_space_size=1024 node_modules/@angular/cli/bin/ng serve",
-    "build-prod": "node --max_old_space_size=1024 node_modules/@angular/cli/bin/ng build --prod",
-    "build:stats": "ng build --stats-json"
+    "create-deploy-branch": "bash create-deploy-branch.sh",
+    "deploy": "bash gh-deploy.sh"
   },
   "private": true,
   "dependencies": {
