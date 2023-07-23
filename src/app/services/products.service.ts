@@ -6,15 +6,12 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export class ProductsService {
+  public productsURL: string = '/api/products-list';
 
-    public productsURL: string = "/api/products-list";
+  constructor(private _http: HttpClient) {}
 
-    constructor(private _http: HttpClient) {
-    }
-
-    public getProductList(): Observable<IProduct[]> {
-        const endpointUrl = `${environment.apiURL}${this.productsURL}`;
-        return this._http.get<IProduct[]>(endpointUrl);
-    }
-
+  public getProductList(): Observable<IProduct[]> {
+    const endpointUrl = `${environment.apiURL}${this.productsURL}`;
+    return this._http.get<IProduct[]>(endpointUrl);
+  }
 }

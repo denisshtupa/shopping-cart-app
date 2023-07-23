@@ -1,8 +1,10 @@
 import { ProductsService } from '../../services/products.service';
-import { Component, TemplateRef } from '@angular/core';
-import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { Component } from '@angular/core';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 import { Constants } from '../../shared/constants/static-variables';
 import { IProduct } from '../../shared/interfaces/interfaces';
+import { DialogService } from 'primeng/dynamicdialog';
+import { CustomModalComponent } from '../modal/modal.component';
 
 @Component({
   selector: 'products-overview',
@@ -19,14 +21,14 @@ export class ProductsOverviewComponent {
   public productList: IProduct[];
   public filteredProducts: IProduct[] = [];
 
-  constructor(private _productsService: ProductsService) {
+  constructor(private _productsService: ProductsService, private dialogService: DialogService) {
   }
 
   ngOnInit() {
-    this.loadProductsListFromAPI();
+    this.loadProductsList();
   }
 
-  private loadProductsListFromAPI() {
+  private loadProductsList() {
     this._productsService.getProductList().subscribe({
       next: (res: IProduct[]) => {
         res.map((x: IProduct) => x.onCart = false);
@@ -42,12 +44,17 @@ export class ProductsOverviewComponent {
     });
   }
 
-  public openModal(template: TemplateRef<any>) {
-    // this.modalRef = this.modalService.show(template);
-  }
+  public openCheckoutAndPaymentModal() {
+    let productsInCart: Array<IProduct>;
+    productsInCart = this.productList.filter((x: IProduct) => x.onCart == true);
 
-  public closeModalHandler() {
-    // this.modalRef.hide();
+    if(productsInCart?.length > 0) {
+      this.dialogService.open(CustomModalComponent, {
+        header: 'Checkout and payment',
+        width: '70%',
+        data: { products: this.productList }
+      });
+    }
   }
 
   public formatToGermanCurrency(price: number): string {
@@ -86,7 +93,8 @@ export class ProductsOverviewComponent {
 
   public numberOfProductsInCart(): number {
     let productsInCart: Array<IProduct>;
-    productsInCart = this.productList.filter(x => x.onCart == true);
+    productsInCart = this.productList.filter((x: IProduct) => x.onCart == true);
+
     return productsInCart.length;
   }
 

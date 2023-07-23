@@ -10,15 +10,26 @@ import { ToolbarModule } from 'primeng/toolbar';
 import { InputTextModule } from 'primeng/inputtext';
 import { BadgeModule } from 'primeng/badge';
 import { ButtonModule } from 'primeng/button';
+import { DialogService } from 'primeng/dynamicdialog';
+import { TabMenuModule } from 'primeng/tabmenu';
+import { CartComponent } from './modal/cart/cart.component';
+import { ShippingComponent } from './modal/shipping/shipping.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     ProductsOverviewComponent,
-    CustomModalComponent
+    CustomModalComponent,
+    CartComponent,
+    ShippingComponent
   ],
   imports: [
     CommonModule,
     AngularIbanModule,
+    FormsModule,
+    ReactiveFormsModule,
     TableModule,
+    TabMenuModule,
     ToolbarModule,
     InputTextModule,
     BadgeModule,
@@ -29,7 +40,8 @@ import { ButtonModule } from 'primeng/button';
     ProductsOverviewComponent
   ],
   providers: [
-    ProductsService
+    ProductsService,
+    DialogService
   ],
   bootstrap: []
 })

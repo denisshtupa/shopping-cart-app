@@ -1,0 +1,44 @@
+<div class="form-row" *ngFor="let product of addedProducts" style="padding:10px;">
+  <div class="col-md-5" style="width:35%; padding-top:2px;">
+    <span
+      class="pi pi-trash cursor-pointer checkout-icon"
+      (click)="removeProduct(product)"
+    >
+    </span>
+    {{product.name}}
+  </div>
+  <div class="col-md-4" style="width:35%;">
+    <ng-container>
+      <span
+        class="pi pi-minus-circle cursor-pointer quantity-icon quantity-icon-remove"
+        [title]="product.quantity != 0 ? 'Remove 1 ' + product.name : ''"
+        [class.disabled-icon]="product.quantity == 0"
+        (click)="removeQuantity(product)"
+      ></span>
+      {{ product.quantity }}
+      <span
+        class="pi pi-plus-circle cursor-pointer quantity-icon quantity-icon-add"
+        [title]="product.quantity != 20 ? 'Add 1 ' + product.name : ''"
+        [class.disabled-icon]="product.quantity >= 20"
+        (click)="addQuantity(product)"
+      ></span>
+    </ng-container>
+  </div>
+  <div class="col-md-3" style="width:20%; padding-top:5px;">{{this.formatToGermanCurrency(product)}}</div>
+</div>
+
+<div class="form-row text-center margin-top-base">
+  <div class="col-12">
+    <div class="col-12">
+      <h4>
+        Total price: <h3><strong>{{this.totalPrice()}}</strong></h3>
+      </h4>
+    </div>
+  </div>
+</div>
+
+<div class="form-row text-center margin-top-base">
+  <div class="col-12">
+    <button type="button" class="btn btn-primary btn-sm" (click)="confirmProducts(1)">Confirm products</button>
+  </div>
+</div>
