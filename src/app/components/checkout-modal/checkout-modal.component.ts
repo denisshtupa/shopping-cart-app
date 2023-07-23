@@ -1,5 +1,4 @@
 import {
-  IShippingDetails,
   IPaymentDetails,
 } from '../../shared/interfaces/interfaces';
 import { GlobalValidator } from '../../shared/constants/global-validator';
@@ -18,10 +17,10 @@ import { DynamicDialogRef, DynamicDialogConfig } from 'primeng/dynamicdialog';
 import { MenuItem } from 'primeng/api';
 
 @Component({
-  selector: 'custom-modal',
-  templateUrl: './modal.component.html',
+  selector: 'checkout-modal',
+  templateUrl: './checkout-modal.component.html',
 })
-export class CustomModalComponent {
+export class CheckoutModalComponent {
   @Input() products: IProduct[] = [];
   @Output() closeModalClicked = new EventEmitter();
   @ViewChild('staticTabs', { static: false }) staticTabs: TabsetComponent;

@@ -4,7 +4,7 @@ import { BsModalRef } from 'ngx-bootstrap/modal';
 import { Constants } from '../../shared/constants/static-variables';
 import { IProduct } from '../../shared/interfaces/interfaces';
 import { DialogService } from 'primeng/dynamicdialog';
-import { CustomModalComponent } from '../modal/modal.component';
+import { CheckoutModalComponent } from '../checkout-modal/checkout-modal.component';
 
 @Component({
   selector: 'products-overview',
@@ -49,7 +49,7 @@ export class ProductsOverviewComponent {
     productsInCart = this.productList.filter((x: IProduct) => x.onCart == true);
 
     if(productsInCart?.length > 0) {
-      this.dialogService.open(CustomModalComponent, {
+      this.dialogService.open(CheckoutModalComponent, {
         header: 'Checkout and payment',
         width: '70%',
         data: { products: this.productList }
