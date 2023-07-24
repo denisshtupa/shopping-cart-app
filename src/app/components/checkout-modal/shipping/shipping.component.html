@@ -52,6 +52,7 @@
         <div class="form-row text-center margin-top-base">
           <div class="col-12">
             <button
+              *ngIf="isCheckoutStep"
               type="button"
               [disabled]="!this.shippingDetailsForm.valid"
               class="btn btn-primary btn-sm"

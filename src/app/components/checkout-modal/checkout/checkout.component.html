@@ -1,1 +1,113 @@
-<p>checkout works!</p>
+<h5 style="text-align: center;;">Products in cart</h5>
+<div class="form-row" *ngFor="let product of addedProducts" style="padding:10px;">
+  <div class="col-md-5" style="width:35%; padding-top:2px;"><strong>{{product.name}}</strong> </div>
+  <div class="col-md-4" style="width:35%;">
+    <strong>
+      {{product.quantity}}
+    </strong>
+  </div>
+  <div class="col-md-3" style="width:20%; padding-top:5px;">{{this.formatToGermanCurrency(product)}}</div>
+</div>
+
+<div class="form-row text-center margin-top-base">
+  <div class="col-12">
+    <h4>Total price: <h3><strong>{{this.totalPrice()}}</strong></h3>
+    </h4>
+  </div>
+</div>
+<hr />
+
+<app-shipping
+  [isCheckoutStep]="false"
+  (onNextTab)="selectTab($event)"
+></app-shipping>
+
+<app-payment
+  [isCheckoutStep]="false"
+  (onNextTab)="selectTab($event)"
+></app-payment>
+
+<div class="form-row text-center margin-top-base">
+  <div class="col-12">
+    <button
+      type="button"
+      class="btn btn-primary btn-sm"
+      (click)="selectTab(4)"
+    >
+      I confirm my data
+    </button>
+  </div>
+</div>
+
+<!-- <div class="container margin-top-base">
+  <h3>Product details</h3>
+  <div class="form-row" *ngFor="let product of addedProducts" style="padding:10px;">
+    <div class="col-md-5" style="width:35%; padding-top:2px;"><span
+        class="material-icons cursor-pointer cart-icon" (click)="removeProduct(product)">
+        delete
+      </span> {{product.name}} </div>
+    <div class="col-md-4" style="width:35%;">
+
+      <ng-container>
+        <span class="material-icons cursor-pointer remove-icon"
+          [title]="product.quantity != 0 ? 'Remove 1 ' + product.name : ''"
+          [class.disabled-icon]="product.quantity == 0" (click)="removeQuantity(product)">
+          remove_circle_outline
+        </span>
+        {{product.quantity}}
+        <span class="material-icons cursor-pointer add-icon"
+          [title]="product.quantity != 20 ? 'Add 1 ' + product.name : ''"
+          [class.disabled-icon]="product.quantity >= 20" (click)="addQuantity(product)">
+          add_circle_outline
+        </span>
+      </ng-container>
+    </div>
+    <div class="col-md-3" style="width:20%; padding-top:5px;">{{this.formatToGermanCurrency(product)}}</div>
+  </div>
+
+  <div class="form-row text-center margin-top-base">
+    <div class="col-12">
+      <h4>Total price: <h3><strong>{{this.totalPrice()}}</strong></h3>
+      </h4>
+    </div>
+  </div>
+  <hr />
+  <ng-container *ngIf="this.shippingDetailsForm.valid">
+    <h4>Shipping details</h4>
+    <div class="form-row margin-top-base">
+      <div class="col-12">
+        <h6>First name: <strong>{{this.shipForm.firstName.value}}</strong></h6>
+        <h6>Second name: <strong>{{this.shipForm.secondName.value}}</strong></h6>
+        <h6>Address: <strong>{{this.shipForm.address.value}}</strong></h6>
+        <h6>Tel: <strong>{{this.shipForm.tel.value}}</strong></h6>
+      </div>
+    </div>
+    <hr />
+  </ng-container>
+
+
+  <ng-container *ngIf="this.paymentForm.valid">
+    <h4>Payment details</h4>
+    <div class="form-row margin-top-base">
+      <div class="col-12">
+        <h6>Account owner: <strong>{{this.payForm.accountOwner.value}}</strong></h6>
+        <h6>IBAN: <strong>{{this.payForm.iban.value | ibanFormatter}}</strong></h6>
+      </div>
+    </div>
+  </ng-container>
+
+  <div class="form-row text-center margin-top-base">
+    <div class="col-12">
+      <button type="button" class="btn btn-primary col-md-6 btn-sm"
+        [disabled]="!this.paymentForm.valid || !this.shippingDetailsForm.valid" (click)="selectTab(4)">Confirm
+        all
+        information</button>
+    </div>
+    <div class="col-12 margin-top-base">
+      <button type="button" class="btn btn-primary col-md-6 btn-sm" (click)="onCloseIconClickHandler()">Go to
+        product
+        list</button>
+    </div>
+  </div>
+
+</div> -->

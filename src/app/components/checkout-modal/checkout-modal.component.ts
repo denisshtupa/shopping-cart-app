@@ -38,10 +38,7 @@ export class CheckoutModalComponent {
   ];
 
   activeItem: MenuItem | undefined = this.tabs[0];
-  public paymentForm: FormGroup;
-  get payForm() {
-    return this.paymentForm.controls;
-  }
+
 
   constructor(
     private _fb: FormBuilder,
@@ -53,10 +50,7 @@ export class CheckoutModalComponent {
 
   ngOnInit() {
     this.activeItem = this.tabs[0];
-
-    this.initPaymentForm();
     this.addedProducts = this.productsList.filter((x: IProduct) => x.onCart);
-    this.patchPaymentForm();
   }
 
   public onCloseIconClickHandler() {
@@ -96,23 +90,4 @@ export class CheckoutModalComponent {
     this.addedProducts = this.addedProducts.filter((x: IProduct) => x.id != product.id);
   }
 
-  private initPaymentForm() {
-    this.paymentForm = this._fb.group({
-      accountOwner: ['', [Validators.required, GlobalValidator.onlyLetters]],
-      iban: ['', [Validators.required, ValidatorService.validateIban]],
-    });
-  }
-
-  private patchPaymentForm() {
-    let paymentObject: IPaymentDetails = JSON.parse(
-      localStorage.getItem('payment')
-    );
-
-    if (paymentObject) {
-      this.paymentForm.patchValue({
-        accountOwner: paymentObject.accountOwner,
-        iban: paymentObject.iban,
-      });
-    }
-  }
 }

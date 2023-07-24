@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { GlobalValidator } from 'src/app/shared/constants/global-validator';
 import { IShippingDetails } from 'src/app/shared/interfaces/interfaces';
@@ -9,6 +9,8 @@ import { IShippingDetails } from 'src/app/shared/interfaces/interfaces';
   styleUrls: ['./shipping.component.scss']
 })
 export class ShippingComponent {
+  @Input() isCheckoutStep: boolean = true;
+
   @Output() onNextTab = new EventEmitter();
 
   public shippingDetailsForm: FormGroup;

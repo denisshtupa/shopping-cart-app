@@ -29,7 +29,6 @@
     <app-shipping
       (onNextTab)="selectTab($event)"
     >
-
     </app-shipping>
     <!-- Content for the "Shipping" tab -->
     <!-- Replace the content of the Shipping tab here -->
@@ -38,11 +37,19 @@
   <div *ngIf="activeItem === this.tabs[2]" class="">
     <!-- Content for the "Payment" tab -->
     <!-- Replace the content of the Payment tab here -->
+    <app-payment
+      (onNextTab)="selectTab($event)"
+    >
+    </app-payment>
   </div>
 
   <div *ngIf="activeItem === this.tabs[3]" class="">
     <!-- Content for the "Checkout" tab -->
     <!-- Replace the content of the Checkout tab here -->
+    <app-checkout
+      [addedProducts]="addedProducts"
+      (onNextTab)="selectTab($event)"
+    ></app-checkout>
   </div>
 
   <div *ngIf="activeItem === this.tabs[4]" class="">
