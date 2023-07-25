@@ -1,44 +1,51 @@
-<div class="form-row" *ngFor="let product of addedProducts" style="padding:10px;">
-  <div class="col-md-5" style="width:35%; padding-top:2px;">
-    <span
-      class="pi pi-trash cursor-pointer checkout-icon"
-      (click)="removeProduct(product)"
-    >
-    </span>
-    {{product.name}}
-  </div>
-  <div class="col-md-4" style="width:35%;">
-    <ng-container>
+<div class="tab-section-container" style="margin: 20px auto; display: flex; flex-direction: column; justify-content: space-around;">
+  <div *ngFor="let product of addedProducts" class="products-overview">
+    <div class="info-columns">
       <span
-        class="pi pi-minus-circle cursor-pointer quantity-icon quantity-icon-remove"
-        [title]="product.quantity != 0 ? 'Remove 1 ' + product.name : ''"
-        [class.disabled-icon]="product.quantity == 0"
-        (click)="removeQuantity(product)"
-      ></span>
-      {{ product.quantity }}
-      <span
-        class="pi pi-plus-circle cursor-pointer quantity-icon quantity-icon-add"
-        [title]="product.quantity != 20 ? 'Add 1 ' + product.name : ''"
-        [class.disabled-icon]="product.quantity >= 20"
-        (click)="addQuantity(product)"
-      ></span>
-    </ng-container>
-  </div>
-  <div class="col-md-3" style="width:20%; padding-top:5px;">{{this.formatToGermanCurrency(product)}}</div>
-</div>
+        class="pi pi-trash cursor-pointer checkout-icon remove-icon"
+        (click)="removeProduct(product)"
+      >
+      </span>
+      {{product.name}}
+    </div>
 
-<div class="form-row text-center margin-top-base">
-  <div class="col-12">
-    <div class="col-12">
-      <h4>
-        Total price: <h3><strong>{{this.totalPrice()}}</strong></h3>
-      </h4>
+    <div class="info-columns">
+      <ng-container>
+        <span
+          class="pi pi-minus-circle cursor-pointer quantity-icon quantity-icon-remove"
+          [title]="product.quantity != 0 ? 'Remove 1 ' + product.name : ''"
+          [class.disabled-icon]="product.quantity == 0"
+          (click)="removeQuantity(product)"
+        ></span>
+        {{ product.quantity }}
+        <span
+          class="pi pi-plus-circle cursor-pointer quantity-icon quantity-icon-add"
+          [title]="product.quantity != 20 ? 'Add 1 ' + product.name : ''"
+          [class.disabled-icon]="product.quantity >= 20"
+          (click)="addQuantity(product)"
+        ></span>
+      </ng-container>
+    </div>
+
+    <div class="info-columns">
+      <span>
+        {{this.formatToGermanCurrency(product)}}
+      </span>
     </div>
   </div>
-</div>
 
-<div class="form-row text-center margin-top-base">
-  <div class="col-12">
-    <button type="button" class="btn btn-primary btn-sm" (click)="confirmProducts(1)">Confirm products</button>
+  <div class="text-center margin-top-base">
+    <h4>
+      Total price: <h3><strong>{{this.totalPrice()}}</strong></h3>
+    </h4>
+  </div>
+
+  <div class="text-center margin-top-base">
+    <p-button
+      type="button"
+      label="Confirm products"
+      class="p-button-sm p-button-rounded p-button-primary"
+      (onClick)="confirmProducts(1)"
+    ></p-button>
   </div>
 </div>

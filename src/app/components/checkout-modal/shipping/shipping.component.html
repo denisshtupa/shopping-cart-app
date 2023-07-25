@@ -1,67 +1,96 @@
-<div class="container margin-top-base">
+<div class="tab-section-container">
   <form [formGroup]="shippingDetailsForm" autocomplete="off" novalidate>
-    <div class="row">
-      <div class="col-md-12 margin-bottom-base">
-        <div class="form-group">
-          <label class="control-label">First name</label>
-          <input type="text" class="form-control" formControlName="firstName">
-          <span class="text-danger"
-            *ngIf="shipForm.firstName.dirty && shipForm.firstName.errors?.required">First name is
-            required</span>
-          <span class="text-danger" *ngIf="shipForm.firstName.dirty && !shipForm.firstName.errors?.required &&
-             shipForm.firstName.errors?.onlyLetters
-            ">First name should contain only letters</span>
-        </div>
+    <div class="margin-bottom-base">
+      <div class="form-item-flex gap-4">
+        <label id="firstName">First name</label>
+        <input pInputText htmlFor="firstName" type="text" formControlName="firstName">
+        <span
+          class="text-danger"
+          *ngIf="shipForm.firstName.dirty && shipForm.firstName.errors?.required"
+        >
+        First name is required
+        </span>
+        <span
+          class="text-danger"
+          *ngIf="shipForm.firstName.dirty && !shipForm.firstName.errors?.required && shipForm.firstName.errors?.onlyLetters"
+        >
+          First name should contain only letters
+        </span>
+      </div>
 
-        <div class="form-group">
-          <label class="control-label">Last name</label>
-          <input type="text" class="form-control" formControlName="lastName">
-          <span class="text-danger"
-            *ngIf="shipForm.lastName.dirty && shipForm.lastName.errors?.required">Second name is
-            required</span>
-          <span class="text-danger" *ngIf="shipForm.lastName.dirty && !shipForm.lastName.errors?.required &&
-             shipForm.lastName.errors?.onlyLetters
-            ">Last name should contain only letters</span>
-        </div>
+      <div class="form-item-flex gap-4">
+        <label id="lastName">Last name</label>
+        <input pInputText htmlFor="firstName" type="text" formControlName="lastName">
+        <span
+          class="text-danger"
+          *ngIf="shipForm.lastName.dirty && shipForm.lastName.errors?.required"
+        >
+          Second name isrequired
+        </span>
+        <span
+          class="text-danger"
+          *ngIf="shipForm.lastName.dirty && !shipForm.lastName.errors?.required && shipForm.lastName.errors?.onlyLetters"
+        >
+          Last name should contain only letters
+        </span>
+      </div>
 
-        <div class="form-group">
-          <label class="control-label">Address</label>
-          <input type="text" class="form-control" formControlName="address">
-          <span class="text-danger"
-            *ngIf="shipForm.address.dirty && shipForm.address.errors?.required">Address is
-            required</span>
-        </div>
+      <div class="form-item-flex gap-4">
+        <label id="address">Address</label>
+        <input pInputText htmlFor="address" type="text" formControlName="address">
+        <span
+          class="text-danger"
+          *ngIf="shipForm.address.dirty && shipForm.address.errors?.required"
+        >
+          Address is required
+        </span>
+      </div>
 
-        <div class="form-group">
-          <label class="control-label">Postal code</label>
-          <input type="number" class="form-control" formControlName="postalCode">
-          <span class="text-danger"
-            *ngIf="shipForm.postalCode.dirty && shipForm.postalCode.errors?.required">Postal code is
-            required</span>
-        </div>
+      <div class="form-item-flex gap-4">
+        <label id="postal">Postal code</label>
+        <input pInputText htmlFor="postal" type="number" formControlName="postalCode">
+        <span
+          class="text-danger"
+          *ngIf="shipForm.postalCode.dirty && shipForm.postalCode.errors?.required"
+        >
+          Postal code is required
+        </span>
+      </div>
 
-        <div class="form-group">
-          <label class="control-label">Tel</label>
-          <input type="text" class="form-control" formControlName="tel">
-          <span class="text-danger" *ngIf="shipForm.tel.dirty && shipForm.tel.errors?.required">Telephone is
-            required</span>
-          <span class="text-danger" *ngIf="shipForm.tel.dirty && !shipForm.tel.errors?.required && shipForm.tel.errors?.phoneNumberFormat
-            ">Please enter a valid phone number</span>
-        </div>
+      <div class="form-item-flex gap-4">
+        <label id="tel">Tel</label>
+        <input pInputText htmlFor="tel" type="text" formControlName="tel">
+        <span
+          class="text-danger"
+          *ngIf="shipForm.tel.dirty && shipForm.tel.errors?.required"
+        >
+          Telephone is required
+        </span>
+        <span
+          class="text-danger"
+          *ngIf="shipForm.tel.dirty && !shipForm.tel.errors?.required && shipForm.tel.errors?.phoneNumberFormat"
+        >
+          Please enter a valid phone number
+        </span>
+      </div>
 
-        <div class="form-row text-center margin-top-base">
-          <div class="col-12">
-            <button
-              *ngIf="isCheckoutStep"
-              type="button"
-              [disabled]="!this.shippingDetailsForm.valid"
-              class="btn btn-primary btn-sm"
-              (click)="selectTab(2)"
-            >
-              Confirm shipping details
-            </button>
-          </div>
-        </div>
+      <div class="text-center margin-top-base">
+        <!-- <button
+          type="button"
+          [disabled]="!this.shippingDetailsForm.valid"
+          class="btn btn-primary btn-sm"
+        >
+          Confirm shipping details
+        </button> -->
+
+        <p-button
+          *ngIf="isCheckoutStep"
+          type="button"
+          label="Confirm shipping details"
+          class="p-button-sm p-button-rounded p-button-primary"
+          [disabled]="!this.shippingDetailsForm.valid"
+          (click)="selectTab(2)"
+        ></p-button>
       </div>
     </div>
   </form>

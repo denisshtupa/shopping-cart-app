@@ -1,0 +1,18 @@
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Make sure the modal-body takes the full height of the modal */
+}
+
+.tab-menu-wrapper {
+  position: sticky;
+  top: 0;
+  background-color: #f0f0f0;
+  z-index: 1; /* Adjust the z-index to make sure it stays above the scrollable sections */
+}
+
+.scrollable-section {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 10px; /* Adjust the padding as per your requirements */
+}

@@ -1,54 +1,38 @@
-<!-- <div class="modal-header">
-    <h4 class="modal-title pull-left">Modal</h4>
-    <button type="button" class="close pull-right" aria-label="Close" (click)="onCloseIconClickHandler()">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div> -->
 <div class="modal-body">
-  <p-tabMenu [activeItem]="activeItem" [model]="tabs"></p-tabMenu>
+  <div class="tab-menu-wrapper">
+    <p-tabMenu [activeItem]="activeItem" [model]="tabsMenu"></p-tabMenu>
+  </div>
 
-  <!-- Content for the individual tabs -->
-  <!-- <div  class=""> -->
-    <!-- Content for the "Cart" tab -->
-    <!-- Replace the content of the Cart tab here -->
-
-    <div *ngIf="activeItem === this.tabs[0]">
-     <app-cart
+  <div *ngIf="activeItem === tabsMenu[0]" class="scrollable-section">
+    <app-cart
       [addedProducts]="addedProducts"
       (onConfirm)="selectTab($event)"
       (onAddQuantity)="addQuantity($event)"
       (onRemoveQuantity)="removeQuantity($event)"
       (onRemoveProduct)="removeProduct($event)"
-     >
-     </app-cart>
-    </div>
-  <!-- </div> -->
+    >
+    </app-cart>
+  </div>
 
-  <div *ngIf="activeItem === this.tabs[1]" class="">
-
+  <div *ngIf="activeItem === tabsMenu[1]" class="scrollable-section">
     <app-shipping
       (onNextTab)="selectTab($event)"
     >
     </app-shipping>
-    <!-- Content for the "Shipping" tab -->
-    <!-- Replace the content of the Shipping tab here -->
   </div>
 
-  <div *ngIf="activeItem === this.tabs[2]" class="">
-    <!-- Content for the "Payment" tab -->
-    <!-- Replace the content of the Payment tab here -->
+  <div *ngIf="activeItem === tabsMenu[2]" class="scrollable-section">
     <app-payment
       (onNextTab)="selectTab($event)"
     >
     </app-payment>
   </div>
 
-  <div *ngIf="activeItem === this.tabs[3]" class="">
-    <!-- Content for the "Checkout" tab -->
-    <!-- Replace the content of the Checkout tab here -->
+  <div *ngIf="activeItem === tabsMenu[3]" class="scrollable-section">
     <app-checkout
       [addedProducts]="addedProducts"
       (onNextTab)="selectTab($event)"
-    ></app-checkout>
+    >
+    </app-checkout>
   </div>
 </div>

@@ -1,37 +1,25 @@
 import {
   Component,
-  EventEmitter,
   Input,
-  Output,
-  ViewChild,
 } from '@angular/core';
 import { IProduct } from '../../shared/interfaces/interfaces';
-import { TabsetComponent } from 'ngx-bootstrap/tabs';
-import { FormBuilder } from '@angular/forms';
 import { DynamicDialogRef, DynamicDialogConfig } from 'primeng/dynamicdialog';
 import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'checkout-modal',
   templateUrl: './checkout-modal.component.html',
+  styleUrls: ['./checkout-modal.component.scss']
 })
 export class CheckoutModalComponent {
   @Input() products: IProduct[] = [];
-  @Output() closeModalClicked = new EventEmitter();
-  @ViewChild('staticTabs', { static: false }) staticTabs: TabsetComponent;
   public productsList: IProduct[];
 
   public addedProducts: IProduct[];
 
+  public tabsMenu: MenuItem[] = [];
 
-  tabs: MenuItem[] = [
-    { label: 'Cart', icon: 'pi pi-shopping-cart', command: () =>  this.activeItem = this.tabs[0] },
-    { label: 'Shipping', icon: 'pi pi-map-marker', command: () => this.activeItem = this.tabs[1] },
-    { label: 'Payment', icon: 'pi pi-credit-card', command: () => this.activeItem = this.tabs[2] },
-    { label: 'Checkout', icon: 'pi pi-check', command: () => this.activeItem = this.tabs[3] }
-  ];
-
-  activeItem: MenuItem | undefined = this.tabs[0];
+  activeItem: MenuItem | undefined = this.tabsMenu[0];
 
 
   constructor(
@@ -42,34 +30,23 @@ export class CheckoutModalComponent {
   }
 
   ngOnInit() {
-    this.activeItem = this.tabs[0];
     this.addedProducts = this.productsList.filter((x: IProduct) => x.onCart);
+    this.initTabsMenu();
   }
 
-  public onCloseIconClickHandler() {
-    this.closeModalClicked.emit();
+  private initTabsMenu() {
+    this.tabsMenu =[
+      { label: 'Cart', icon: 'pi pi-shopping-cart', command: () =>  this.activeItem = this.tabsMenu[0] },
+      { label: 'Shipping', icon: 'pi pi-map-marker', command: () => this.activeItem = this.tabsMenu[1] },
+      { label: 'Payment', icon: 'pi pi-credit-card', command: () => this.activeItem = this.tabsMenu[2] },
+      { label: 'Checkout', icon: 'pi pi-check', command: () => this.activeItem = this.tabsMenu[3] }
+    ];
+    this.activeItem = this.tabsMenu[0];
   }
 
-
-  public selectTab(tabId: number, mode: string = '') {
-    this.activeItem = this.tabs[tabId];
+  public selectTab(tabId: number) {
+    this.activeItem = this.tabsMenu[tabId];
   }
-
-  public selectTabConditionally(tabId: number, isValid: boolean) {
-    if (isValid) {
-      this.staticTabs.tabs[tabId].active = true;
-    } else {
-      return;
-    }
-  }
-
-  // public formatToGermanCurrency(product: IProduct): string {
-  //   let totalPrice = Number(product.price) * product.quantity;
-  //   return new Intl.NumberFormat('de-DE', {
-  //     style: 'currency',
-  //     currency: 'EUR',
-  //   }).format(Number(totalPrice));
-  // }
 
   public removeQuantity(product: IProduct) {
     product.quantity--;

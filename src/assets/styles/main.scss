@@ -1,28 +1,41 @@
+@import './variables.scss';
+
+.main-container {
+  background-color: #f0f0f0;
+  padding: $spacing-unit;
+  margin: $spacing-unit;
+  border-radius: 8px;
+}
+
 // Small devices (landscape phones, 350px and up)
 @media (min-width: 350px) {
   .main-container {
-    width: 100%
+    width: 99%;
+    margin: 0 auto;
   }
 }
 
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {
   .main-container {
-    width: 100%
+    width: 99%;
+    margin: 0 auto;
   }
 }
 
 // Large devices (desktops, 992px and up)
 @media (min-width: 992px) {
   .main-container {
-    width: 100%
+    width: 90%;
+    margin: 10px auto;
   }
 }
 
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
   .main-container {
-    width: 100%
+    width: 80%;
+    margin: 10px auto;
   }
 }
 
@@ -46,10 +59,9 @@ html {
   }
 }
 
-$zindex-dropdown: 1000 !default;
-$zindex-sticky: 1020 !default;
-$zindex-fixed: 1030 !default;
-$zindex-modal-backdrop: 1040 !default;
-$zindex-modal: 1050 !default;
-$zindex-popover: 1060 !default;
-$zindex-tooltip: 1070 !default;
+.tab-section-container {
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}

@@ -15,8 +15,6 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     FormsModule,
-    // ModalModule,
-    // TabsModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
@@ -24,8 +22,10 @@ import { AppComponent } from './app.component';
     ComponentsModule
   ],
   providers: [
-    // BsModalService,
     ProductsService
+  ],
+  exports: [
+    SharedModule
   ],
   bootstrap: [AppComponent]
 })

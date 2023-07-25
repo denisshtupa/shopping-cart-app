@@ -1,0 +1,16 @@
+.remove-icon {
+  color: red;
+  position: relative;
+  top: 5px;
+}
+
+.products-overview {
+  padding: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  .info-columns {
+    width:30%;
+  }
+}

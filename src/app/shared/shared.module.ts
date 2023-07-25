@@ -3,7 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TabMenuModule } from 'primeng/tabmenu';
 import { DialogModule } from 'primeng/dialog';
+import { ButtonModule } from 'primeng/button';
 import { SpinnerComponent } from './utils/spinner/spinner.component';
+import { BadgeModule } from 'primeng/badge';
+import { InputTextModule } from 'primeng/inputtext';
+import { ToolbarModule } from 'primeng/toolbar';
+import { TableModule } from 'primeng/table';
 
 @NgModule({
   declarations: [
@@ -13,10 +18,24 @@ import { SpinnerComponent } from './utils/spinner/spinner.component';
     BrowserModule,
     BrowserAnimationsModule,
     TabMenuModule,
-    DialogModule
+    DialogModule,
+    TableModule,
+    TabMenuModule,
+    ToolbarModule,
+    InputTextModule,
+    BadgeModule,
+    ButtonModule
   ],
   exports: [
-    SpinnerComponent
+    SpinnerComponent,
+    TabMenuModule,
+    DialogModule,
+    TableModule,
+    TabMenuModule,
+    ToolbarModule,
+    InputTextModule,
+    BadgeModule,
+    ButtonModule
   ],
   bootstrap: []
 })

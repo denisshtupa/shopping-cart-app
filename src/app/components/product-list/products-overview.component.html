@@ -86,24 +86,14 @@
           <ng-container>
             <span
               class="pi pi-cart-plus cursor-pointer checkout-icon"
-              [title]="
-                product.quantity != 0 && !product.onCart
-                  ? 'Add ' + product.name + ' to cart'
-                  : ''
-              "
-              [style.color]="
-                !product.onCart && product.quantity != 0 ? 'green' : 'gray'
-              "
+              [title]="product.quantity != 0 && !product.onCart ? 'Add ' + product.name + ' to cart' : ''"
+              [style.color]="!product.onCart && product.quantity != 0 ? 'green' : 'gray'"
               [class.disabled-icon]="product.onCart || product.quantity == 0"
               (click)="addOnCart(product)"
             ></span>
             <span
               class="pi pi-trash cursor-pointer checkout-icon"
-              [title]="
-                product.quantity != 0 && product.onCart
-                  ? 'Remove ' + product.name + ' from cart'
-                  : ''
-              "
+              [title]="product.quantity != 0 && product.onCart ? 'Remove ' + product.name + ' from cart' : ''"
               [style.color]="product.onCart ? 'red' : 'gray'"
               [class.disabled-icon]="!product.onCart"
               (click)="removeFromCart(product)"

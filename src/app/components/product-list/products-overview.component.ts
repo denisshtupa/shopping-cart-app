@@ -1,6 +1,5 @@
 import { ProductsService } from '../../services/products.service';
 import { Component } from '@angular/core';
-import { BsModalRef } from 'ngx-bootstrap/modal';
 import { Constants } from '../../shared/constants/static-variables';
 import { IProduct } from '../../shared/interfaces/interfaces';
 import { DialogService } from 'primeng/dynamicdialog';
@@ -13,7 +12,6 @@ import { CheckoutModalComponent } from '../checkout-modal/checkout-modal.compone
 })
 
 export class ProductsOverviewComponent {
-  public modalRef: BsModalRef;
   public title: string = 'Shopping cart';
   public isAscendingSort: boolean;
   public ordered: string = "";
@@ -56,6 +54,7 @@ export class ProductsOverviewComponent {
       this.dialogService.open(CheckoutModalComponent, {
         header: 'Checkout and payment',
         width: '70%',
+        height: '70%',
         data: { products: this.productList }
       });
     }
