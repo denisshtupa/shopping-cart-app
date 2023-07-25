@@ -1,8 +1,4 @@
 import {
-  IPaymentDetails,
-} from '../../shared/interfaces/interfaces';
-import { GlobalValidator } from '../../shared/constants/global-validator';
-import {
   Component,
   EventEmitter,
   Input,
@@ -11,8 +7,7 @@ import {
 } from '@angular/core';
 import { IProduct } from '../../shared/interfaces/interfaces';
 import { TabsetComponent } from 'ngx-bootstrap/tabs';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ValidatorService } from 'angular-iban';
+import { FormBuilder } from '@angular/forms';
 import { DynamicDialogRef, DynamicDialogConfig } from 'primeng/dynamicdialog';
 import { MenuItem } from 'primeng/api';
 
@@ -33,15 +28,13 @@ export class CheckoutModalComponent {
     { label: 'Cart', icon: 'pi pi-shopping-cart', command: () =>  this.activeItem = this.tabs[0] },
     { label: 'Shipping', icon: 'pi pi-map-marker', command: () => this.activeItem = this.tabs[1] },
     { label: 'Payment', icon: 'pi pi-credit-card', command: () => this.activeItem = this.tabs[2] },
-    { label: 'Checkout', icon: 'pi pi-check', command: () => this.activeItem = this.tabs[3] },
-    { label: 'Progress', icon: 'pi pi-chart-line', command: () => this.activeItem = this.tabs[4] }
+    { label: 'Checkout', icon: 'pi pi-check', command: () => this.activeItem = this.tabs[3] }
   ];
 
   activeItem: MenuItem | undefined = this.tabs[0];
 
 
   constructor(
-    private _fb: FormBuilder,
     private dialogRef: DynamicDialogRef,
     private config: DynamicDialogConfig
   ) {

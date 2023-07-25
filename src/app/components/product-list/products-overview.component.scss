@@ -1,6 +1,8 @@
+@import './../../../assets/styles/variables.scss';
+
 .main-container {
   padding: 30px;
-  background-color: #ffd2ba;
+  background-color: $primary-color;
 
   .text-center {
     letter-spacing: 2px;
@@ -18,7 +20,6 @@
     margin-left: 20px;
   }
 }
-
 
 .main-shopping-cart {
   font-size: 2rem;

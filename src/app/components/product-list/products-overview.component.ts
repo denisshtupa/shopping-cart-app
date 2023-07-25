@@ -20,6 +20,7 @@ export class ProductsOverviewComponent {
   public searchValue: string = "";
   public productList: IProduct[];
   public filteredProducts: IProduct[] = [];
+  public isLoading: boolean = false;
 
   constructor(private _productsService: ProductsService, private dialogService: DialogService) {
   }
@@ -29,16 +30,19 @@ export class ProductsOverviewComponent {
   }
 
   private loadProductsList() {
+    this.isLoading = true;
     this._productsService.getProductList().subscribe({
       next: (res: IProduct[]) => {
         res.map((x: IProduct) => x.onCart = false);
         this.productList = res;
         this.filteredProducts = res;
+        this.isLoading = false;
       },
       error: (error) => {
         if (error) {
           this.productList = Constants.productList;
           this.filteredProducts = Constants.productList;
+          this.isLoading = false;
         }
       }
     });

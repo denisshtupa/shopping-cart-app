@@ -5,35 +5,56 @@ export class Constants {
   static productList: Array<IProduct> = [
     {
       id: Uuid.MakeNew(),
-      name: 'Car',
-      price: 15999,
+      name: 'Volkswagen',
+      price: 15900,
       quantity: 0,
       onCart: false
     },
     {
       id: Uuid.MakeNew(),
-      name: 'Jeans',
+      name: 'Tommy Jeans',
       price: 59,
       quantity: 0,
       onCart: false
     },
     {
       id: Uuid.MakeNew(),
-      name: 'Phone',
-      price: 899,
+      name: 'Bicycle',
+      price: 890,
       quantity: 0,
       onCart: false
     },
     {
       id: Uuid.MakeNew(),
-      name: 'Computer',
-      price: 1099,
+      name: 'Nike Sneakers',
+      price: 169,
       quantity: 0,
       onCart: false
     },
     {
       id: Uuid.MakeNew(),
-      name: 'Book',
+      name: 'iPhone',
+      price: 1290,
+      quantity: 0,
+      onCart: false
+    },
+    {
+      id: Uuid.MakeNew(),
+      name: 'One+',
+      price: 790,
+      quantity: 0,
+      onCart: false
+    },
+    {
+      id: Uuid.MakeNew(),
+      name: 'Lenovo laptop',
+      price: 1799,
+      quantity: 0,
+      onCart: false
+    },
+    {
+      id: Uuid.MakeNew(),
+      name: 'Vocabulary',
       price: 19,
       quantity: 0,
       onCart: false
