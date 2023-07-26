@@ -1,7 +1,4 @@
-import {
-  Component,
-  Input
-} from '@angular/core';
+import { Component } from '@angular/core';
 import { IProduct } from '../../shared/interfaces/interfaces';
 import { DynamicDialogRef, DynamicDialogConfig } from 'primeng/dynamicdialog';
 import { MenuItem } from 'primeng/api';
@@ -12,8 +9,6 @@ import { MenuItem } from 'primeng/api';
   styleUrls: ['./checkout-modal.component.scss']
 })
 export class CheckoutModalComponent {
-  @Input() products: IProduct[] = [];
-
   public productsList: IProduct[];
   public addedProducts: IProduct[];
   public tabsMenu: MenuItem[] = [];
@@ -58,6 +53,11 @@ export class CheckoutModalComponent {
   }
 
   public handleFinish() {
+    this.productsList.forEach((product: IProduct) => {
+      product.quantity = 0;
+      product.onCart = false;
+    });
+
     this.dialogRef.close();
   }
 }
