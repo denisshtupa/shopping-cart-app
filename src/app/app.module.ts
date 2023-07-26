@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
 import { ComponentsModule } from './components/components.module';
 import { AppComponent } from './app.component';
+import { MessageService } from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { AppComponent } from './app.component';
     ComponentsModule
   ],
   providers: [
-    ProductsService
+    ProductsService,
+    MessageService
   ],
   exports: [
     SharedModule

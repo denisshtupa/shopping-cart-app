@@ -9,6 +9,7 @@ import { BadgeModule } from 'primeng/badge';
 import { InputTextModule } from 'primeng/inputtext';
 import { ToolbarModule } from 'primeng/toolbar';
 import { TableModule } from 'primeng/table';
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { TableModule } from 'primeng/table';
     ToolbarModule,
     InputTextModule,
     BadgeModule,
-    ButtonModule
+    ButtonModule,
+    ToastModule
   ],
   exports: [
     SpinnerComponent,
@@ -35,8 +37,10 @@ import { TableModule } from 'primeng/table';
     ToolbarModule,
     InputTextModule,
     BadgeModule,
-    ButtonModule
+    ButtonModule,
+    ToastModule
   ],
-  bootstrap: []
+  providers: [
+  ]
 })
 export class SharedModule { }

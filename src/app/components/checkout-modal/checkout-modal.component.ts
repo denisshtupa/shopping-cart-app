@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IProduct } from '../../shared/interfaces/interfaces';
 import { DynamicDialogRef, DynamicDialogConfig } from 'primeng/dynamicdialog';
-import { MenuItem } from 'primeng/api';
+import { MenuItem, MessageService } from 'primeng/api';
 
 @Component({
   selector: 'checkout-modal',
@@ -16,7 +16,8 @@ export class CheckoutModalComponent {
 
   constructor(
     private dialogRef: DynamicDialogRef,
-    private config: DynamicDialogConfig
+    private config: DynamicDialogConfig,
+    private messageService: MessageService
   ) {
     this.productsList = config.data.products;
   }
@@ -53,6 +54,13 @@ export class CheckoutModalComponent {
   }
 
   public handleFinish() {
+    this.messageService.add(
+      { life: 4000,
+        severity: 'success',
+        summary: 'Success',
+        detail: 'Order placed successfully.'
+      }
+    );
     this.productsList.forEach((product: IProduct) => {
       product.quantity = 0;
       product.onCart = false;
