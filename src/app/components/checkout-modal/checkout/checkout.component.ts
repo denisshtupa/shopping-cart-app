@@ -10,7 +10,7 @@ import { formatToGermanCurr } from 'src/app/shared/utils/functions';
 })
 export class CheckoutComponent {
   @Input() addedProducts: IProduct[] = [];
-  @Output() onNextTab = new EventEmitter();
+  @Output() onFinish = new EventEmitter();
 
   constructor(
     private _fb: FormBuilder
@@ -21,8 +21,8 @@ export class CheckoutComponent {
 
   }
 
-  public selectTab(tabId: number) {
-    this.onNextTab.emit(tabId);
+  public finishBuying() {
+    this.onFinish.emit();
   }
 
   public totalPrice(): string {

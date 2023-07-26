@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ValidatorService } from 'angular-iban';
-import { GlobalValidator } from 'src/app/shared/constants/global-validator';
-import { IPaymentDetails, IShippingDetails } from 'src/app/shared/interfaces/interfaces';
+import { GlobalValidator } from 'src/app/shared/utils/global-validator';
+import { IPaymentDetails } from 'src/app/shared/interfaces/interfaces';
 
 @Component({
   selector: 'app-payment',

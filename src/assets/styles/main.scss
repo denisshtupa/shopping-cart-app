@@ -47,6 +47,10 @@ html {
   text-align: center;
 }
 
+.text-right {
+  text-align: right;
+}
+
 .margin-top-base {
   margin-top: 20px
 }
@@ -64,4 +68,14 @@ html {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+}
+
+.form-item-flex {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.gap-4 > * {
+  margin-bottom: 4px;
 }

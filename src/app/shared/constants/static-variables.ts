@@ -1,5 +1,5 @@
 import { IProduct } from '../interfaces/interfaces';
-import { Uuid } from './uuid';
+import { Uuid } from '../utils/uuid';
 
 export class Constants {
   static productList: Array<IProduct> = [
@@ -47,14 +47,14 @@ export class Constants {
     },
     {
       id: Uuid.MakeNew(),
-      name: 'Lenovo laptop',
-      price: 1799,
+      name: 'Lenovo Thinkbook',
+      price: 1790,
       quantity: 0,
       onCart: false
     },
     {
       id: Uuid.MakeNew(),
-      name: 'Vocabulary',
+      name: 'Dictionary',
       price: 19,
       quantity: 0,
       onCart: false

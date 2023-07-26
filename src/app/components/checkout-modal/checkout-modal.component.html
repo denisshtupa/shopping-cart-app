@@ -31,7 +31,7 @@
   <div *ngIf="activeItem === tabsMenu[3]" class="scrollable-section">
     <app-checkout
       [addedProducts]="addedProducts"
-      (onNextTab)="selectTab($event)"
+      (onFinish)="handleFinish()"
     >
     </app-checkout>
   </div>

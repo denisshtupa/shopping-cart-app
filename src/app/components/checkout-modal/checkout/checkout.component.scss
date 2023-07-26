@@ -1,0 +1,11 @@
+.checkout-products {
+  width: 40%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 10px auto;
+
+  .info-columns {
+    width: 30%;
+  }
+}

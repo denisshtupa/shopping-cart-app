@@ -8,7 +8,7 @@
           class="text-danger"
           *ngIf="shipForm.firstName.dirty && shipForm.firstName.errors?.required"
         >
-        First name is required
+          First name is required
         </span>
         <span
           class="text-danger"
@@ -75,14 +75,6 @@
       </div>
 
       <div class="text-center margin-top-base">
-        <!-- <button
-          type="button"
-          [disabled]="!this.shippingDetailsForm.valid"
-          class="btn btn-primary btn-sm"
-        >
-          Confirm shipping details
-        </button> -->
-
         <p-button
           *ngIf="isCheckoutStep"
           type="button"
