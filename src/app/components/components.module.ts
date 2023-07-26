@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProductsOverviewComponent } from './product-list/products-overview.component';
+import { ProductsOverviewComponent } from './product-overview/products-overview.component';
 import { AngularIbanModule } from 'angular-iban';
 import { SharedModule } from '../shared/shared.module';
 import { ProductsService } from '../services/products.service';

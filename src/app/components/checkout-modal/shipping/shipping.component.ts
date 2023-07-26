@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { GlobalValidator } from 'src/app/shared/constants/global-validator';
+import { GlobalValidator } from 'src/app/shared/utils/global-validator';
 import { IShippingDetails } from 'src/app/shared/interfaces/interfaces';
 
 @Component({

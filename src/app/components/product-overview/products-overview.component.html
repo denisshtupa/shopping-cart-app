@@ -31,7 +31,7 @@
   >
     <ng-template pTemplate="emptymessage">
       <tr>
-        <td colspan="4" style="text-align: center">No results found</td>
+        <td class="text-center" colspan="4">No results found</td>
       </tr>
     </ng-template>
     <ng-template pTemplate="header">
@@ -60,11 +60,11 @@
     </ng-template>
     <ng-template pTemplate="body" let-product let-i="rowIndex">
       <tr [style.text-align]="'center'">
-        <td class="cursor-pointer text-center-aligned">{{ product.name }}</td>
-        <td class="text-center-aligned">
+        <td class="cursor-pointer text-center">{{ product.name }}</td>
+        <td class="text-center">
           {{ formatToGermanCurrency(product.price) }}
         </td>
-        <td class="td-actions text-center-aligned">
+        <td class="td-actions text-center">
           <ng-container>
             <span
               class="pi pi-minus-circle cursor-pointer quantity-icon quantity-icon-remove"
@@ -82,7 +82,7 @@
           </ng-container>
         </td>
 
-        <td class="td-actions text-center-aligned">
+        <td class="td-actions text-center">
           <ng-container>
             <span
               class="pi pi-cart-plus cursor-pointer checkout-icon"

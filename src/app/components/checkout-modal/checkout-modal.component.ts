@@ -1,6 +1,6 @@
 import {
   Component,
-  Input,
+  Input
 } from '@angular/core';
 import { IProduct } from '../../shared/interfaces/interfaces';
 import { DynamicDialogRef, DynamicDialogConfig } from 'primeng/dynamicdialog';
@@ -13,14 +13,11 @@ import { MenuItem } from 'primeng/api';
 })
 export class CheckoutModalComponent {
   @Input() products: IProduct[] = [];
+
   public productsList: IProduct[];
-
   public addedProducts: IProduct[];
-
   public tabsMenu: MenuItem[] = [];
-
-  activeItem: MenuItem | undefined = this.tabsMenu[0];
-
+  public activeItem: MenuItem | undefined = this.tabsMenu[0];
 
   constructor(
     private dialogRef: DynamicDialogRef,
@@ -60,4 +57,7 @@ export class CheckoutModalComponent {
     this.addedProducts = this.addedProducts.filter((x: IProduct) => x.id != product.id);
   }
 
+  public handleFinish() {
+    this.dialogRef.close();
+  }
 }

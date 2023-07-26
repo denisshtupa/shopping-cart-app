@@ -1,41 +1,50 @@
 <div class="tab-section-container">
   <form [formGroup]="paymentForm" autocomplete="off" novalidate>
-    <div class="row">
-      <div class="col-md-12 margin-bottom-base">
-        <div class="form-group">
-          <label class="control-label">Account owner</label>
-          <input type="text" class="form-control" formControlName="accountOwner">
-          <span class="text-danger"
-            *ngIf="payForm.accountOwner.dirty && payForm.accountOwner.errors?.required">Account owner is
-            required</span>
-          <span class="text-danger" *ngIf="payForm.accountOwner.dirty && !payForm.accountOwner.errors?.required &&
-             payForm.accountOwner.errors?.onlyLetters
-            ">Account owner should contain only letters</span>
-        </div>
+    <div class="margin-bottom-base">
+      <div class="form-item-flex gap-4">
+        <label id="accountOwner">Account owner</label>
+        <input pInputText htmlFor="accountOwner" type="text" formControlName="accountOwner">
+        <span
+          class="text-danger"
+          *ngIf="payForm.accountOwner.dirty && payForm.accountOwner.errors?.required"
+        >
+          Account owner is required
+        </span>
+        <span
+          class="text-danger"
+          *ngIf="payForm.accountOwner.dirty && !payForm.accountOwner.errors?.required && payForm.accountOwner.errors?.onlyLetters"
+        >
+          Account owner should contain only letters
+        </span>
+      </div>
 
-        <div class="form-group">
-          <label class="control-label">IBAN</label>
-          <input type="text" class="form-control" name="iban" id="iban" formControlName="iban">
-          <span class="text-danger" *ngIf="payForm.iban.dirty && payForm.iban.errors?.required">IBAN is
-            required</span>
-          <span class="text-danger" *ngIf="payForm.iban.dirty && !payForm.iban.errors?.required &&
-             !payForm.iban.valid
-            ">Please enter a valid IBAN</span>
-        </div>
+      <div class="form-item-flex gap-4">
+        <label id="iban">IBAN</label>
+        <input pInputText htmlFor="iban" type="text" formControlName="iban">
+        <span
+          class="text-danger"
+          *ngIf="payForm.iban.dirty && payForm.iban.errors?.required"
+        >
+          IBAN is required
+        </span>
+        <span
+          class="text-danger"
+          *ngIf="payForm.iban.dirty && !payForm.iban.errors?.required && !payForm.iban.valid"
+        >
+          Please enter a valid IBAN
+        </span>
+      </div>
 
-        <div class="form-row text-center margin-top-base">
-          <div class="col-12">
-            <button
-              *ngIf="isCheckoutStep"
-              type="button"
-              [disabled]="!this.paymentForm.valid"
-              class="btn btn-primary btn-sm"
-              (click)="selectTab(3)"
-            >
-              Confirm payment details
-            </button>
-          </div>
-        </div>
+      <div class="text-center margin-top-base">
+        <p-button
+          *ngIf="isCheckoutStep"
+          type="button"
+          label="Confirm payment details"
+          [disabled]="!this.paymentForm.valid"
+          class="p-button-sm p-button-rounded p-button-primary"
+          (click)="selectTab(3)"
+        >
+        </p-button>
       </div>
     </div>
   </form>

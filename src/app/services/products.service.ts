@@ -11,7 +11,7 @@ export class ProductsService {
   constructor(private _http: HttpClient) {}
 
   public getProductList(): Observable<IProduct[]> {
-    const endpointUrl = `${environment.apiURL}${this.productsURL}`;
+    const endpointUrl: string = `${environment.apiURL}${this.productsURL}`;
     return this._http.get<IProduct[]>(endpointUrl);
   }
 }

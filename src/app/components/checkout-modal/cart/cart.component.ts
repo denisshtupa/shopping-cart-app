@@ -15,11 +15,6 @@ export class CartComponent {
   @Output() onRemoveQuantity = new EventEmitter();
   @Output() onRemoveProduct = new EventEmitter();
 
-
-  constructor() {
-
-  }
-
   ngOnInit() {
 
   }
@@ -55,6 +50,4 @@ export class CartComponent {
   public removeProduct(product: IProduct) {
     this.onRemoveProduct.emit(product);
   }
-
-
 }
