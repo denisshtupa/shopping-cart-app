@@ -1,13 +1,17 @@
 <div class="tab-section-container">
   <h5 class="text-center">Products in cart</h5>
-  <div *ngFor="let product of addedProducts" style="width: 40%; display: flex; flex-direction: row; justify-content: space-around; margin: 10px auto;">
-    <div style="width: 30%;"><strong>{{product.name}}</strong> </div>
-    <div style="width: 30%; text-align: center;">
+  <div *ngFor="let product of addedProducts" class="checkout-products">
+    <div class="info-columns">
+      <strong>{{product.name}}</strong>
+    </div>
+    <div class="text-center info-columns">
       <strong>
         {{product.quantity}}
       </strong>
     </div>
-    <div style="width: 30%; text-align: right;">{{this.formatToGermanCurrency(product)}}</div>
+    <div class="text-right info-columns">
+      {{this.formatToGermanCurrency(product)}}
+    </div>
   </div>
 
   <div class="text-center margin-top-base">
@@ -15,7 +19,8 @@
       Total price: <h3><strong>{{this.totalPrice()}}</strong></h3>
     </h4>
   </div>
-  <hr />
+
+  <hr/>
 
   <app-shipping
     [isCheckoutStep]="false"
@@ -33,5 +38,4 @@
       (click)="finishBuying()"
     ></p-button>
   </div>
-
 </div>

@@ -1,4 +1,4 @@
-<div class="tab-section-container" style="margin: 20px auto; display: flex; flex-direction: column; justify-content: space-around;">
+<div class="tab-section-container">
   <div *ngFor="let product of addedProducts" class="products-overview">
     <div class="info-columns">
       <span
@@ -27,7 +27,7 @@
       </ng-container>
     </div>
 
-    <div class="info-columns">
+    <div class="info-columns text-right">
       <span>
         {{this.formatToGermanCurrency(product)}}
       </span>

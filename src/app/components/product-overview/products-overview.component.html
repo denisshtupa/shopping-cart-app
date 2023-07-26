@@ -60,7 +60,7 @@
     </ng-template>
     <ng-template pTemplate="body" let-product let-i="rowIndex">
       <tr [style.text-align]="'center'">
-        <td class="cursor-pointer text-center">{{ product.name }}</td>
+        <td class="cursor-pointer text-center" (click)="addQuantity(product)">{{ product.name }}</td>
         <td class="text-center">
           {{ formatToGermanCurrency(product.price) }}
         </td>
