@@ -5,9 +5,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 To access deployed version on your browser, click this link here [shopping-cart-app](https://denisshtupa.github.io/shopping-cart-app/shopping-cart)
 
 ## Deploy to github pages
-Run first `npm run create-deploy-branch`
-Make sure to publish the just created branch. Publish it manually if not pushed automatically.
-Select just created `gh-pages` branch on github pages
+Run first `npm run create-deploy-branch`\
+Make sure to publish the just created branch. Publish it manually if not pushed automatically.\
+Select just created `gh-pages` branch on github pages\
 Run finally `npm run deploy`
 
 ## Development server
